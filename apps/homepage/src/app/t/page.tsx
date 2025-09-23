@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { ContactInfo } from '@/types/contactInfo';
 import { SocialButtons } from '@/components/socialbuttons';
 import { DownloadButtons } from '@/components/downloadbuttons';
@@ -79,7 +79,7 @@ export default function TPage() {
     const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-    async function fetchContactInfo() {
+    const fetchContactInfo = useCallback(async () => {
         setContactStatus(ContactStatus.loading);
 
         try {
@@ -113,7 +113,7 @@ export default function TPage() {
             console.error('Error fetching contact info:', error);
             setContactStatus(ContactStatus.failed);
         }
-    }
+    }, [captchaToken])
 
     const handleCaptchaChange = (ev: Event) => {
         if (!('detail' in ev)) {
@@ -128,14 +128,7 @@ export default function TPage() {
 
     useEffect(() => {
         fetchContactInfo();
-    }, []);
-
-    useEffect(() => {
-        console.log('CCambio el coso', captchaToken, contactStatus);
-        if (captchaToken && contactStatus !== ContactStatus.loaded) {
-            fetchContactInfo();
-        }
-    }, [captchaToken])
+    }, [fetchContactInfo]);
 
     return (
         <main className="min-h-screen bg-black text-green-500 items-center mx-auto max-w-5x1 px-6 py-12">

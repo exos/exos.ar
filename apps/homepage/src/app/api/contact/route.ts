@@ -24,7 +24,7 @@ const getTelegramBot = (() => {
 
 })();
 
-export async function GET(request: NextRequest) {
+export async function GET() {
 
     return NextResponse.json<ContactInfo>({
         email: process.env.CONTACT_EMAIL || '',

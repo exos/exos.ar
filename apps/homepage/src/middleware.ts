@@ -37,7 +37,7 @@ async function verifyCaptcha(request: NextRequest, response: NextResponse) : Pro
         return false;
     }
 
-    const { verificationData, verified } = await verifyServerSignature(token, CAPTCHA_SECRET!);
+    const { verified } = await verifyServerSignature(token, CAPTCHA_SECRET!);
 
     if (!verified) {
         return false;
@@ -59,7 +59,6 @@ async function verifyCaptcha(request: NextRequest, response: NextResponse) : Pro
 }
 
 export async function middleware(request: NextRequest) {
-    console.log('AAAAAAAAAAAAAAAAAAAAa');
     const url = request.nextUrl.clone();
     const response = NextResponse.next();
 

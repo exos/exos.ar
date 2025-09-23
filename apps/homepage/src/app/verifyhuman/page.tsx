@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams, redirect } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import Captcha from '@/components/captcha';
 
 export default function VerifyHumanPage() {
@@ -37,7 +38,7 @@ export default function VerifyHumanPage() {
         url.searchParams.set('captcha_token', captchaToken);
 
         window.open(url.toString());
-    }, [captchaToken])
+    }, [captchaToken, goto])
 
     return (
         <main className="min-h-screen bg-black text-green-500 flex flex-col items-center mx-auto max-w-5xl px-6 py-12">
@@ -56,18 +57,18 @@ export default function VerifyHumanPage() {
 
                 <section className="mt-10 rounded-xl border border-green-500/20 bg-green-500/5 p-6 text-center">
                     <h2 className="text-2xl font-semibold text-green-500">Can a robot dream?</h2>
-                    <img src='robot.png' className="my-4" />
+                    <img src='robot.png' className="my-4" alt="Robot illustration" />
                     <Captcha
                         onStateChange={handleCaptchaChange}
                     />
                 </section>
                 {( captchaToken && (
-                    <a
+                    <Link
                         href="/"
                         className="block w-full rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300 text-center pt-4"
                     >
                         Go to home 
-                    </a>
+                    </Link>
                 ))}
 
             </div>

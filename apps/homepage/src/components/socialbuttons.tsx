@@ -1,4 +1,6 @@
 
+import Link from 'next/link'
+
 export function SocialButtons() {
     return (
         <section className="mt-10 rounded-xl border border-green-500/20 bg-green-500/5 p-6">
@@ -22,12 +24,12 @@ export function SocialButtons() {
                 >
                     LinkedIn
                 </a>
-                <a
+                <Link
                     href="/"
                     className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
                 >
                     Personal web page 
-                </a>
+                </Link>
             </div>
         </section>
     );

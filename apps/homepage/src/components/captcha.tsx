@@ -52,4 +52,6 @@ const Altcha = forwardRef<{ value: string | null }, AltchaProps>(({ onStateChang
     )
 })
 
+Altcha.displayName = 'Altcha'
+
 export default Altcha
