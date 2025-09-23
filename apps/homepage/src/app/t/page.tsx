@@ -63,7 +63,7 @@ function ContactInfo(props: ContactButtonProperties) {
                         Copy
                     </a>
                     <a
-                        href={`tel:${email.replace(/[^0-9]/, '')}`}
+                        href={`tel:+${phone.replace(/[^0-9]/g, '')}`}
                         className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
                     >
                         Call
