@@ -1,0 +1,31 @@
+
+import { readFile } from 'node:fs';
+import { resolve as pathResolve } from 'node:path';
+
+import { NextRequest, NextResponse } from 'next/server';
+
+const getVcard = (() => {
+    let vcard: Buffer | Promise<Buffer>;
+
+    return async () => {
+        if (!vcard) {
+            vcard = new Promise<Buffer>((resolve, reject) => {
+                readFile(pathResolve('../../../../private/exos.vcard'), (err, data) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        vcard = data;
+                        resolve(data);
+                    }
+                });
+            });
+        }
+
+        return vcard;
+    };
+
+})();
+
+export async function GET(request: NextRequest) {
+    Next
+}
