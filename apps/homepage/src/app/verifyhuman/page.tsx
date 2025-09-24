@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Captcha from "@/components/captcha";
 import { RoundLogo } from "@/components/roundlogo";
 
-export default function VerifyHumanPage() {
+interface VerifyHumanPageProps {
+  goto?: string;
+}
+
+export default function VerifyHumanPage(props: VerifyHumanPageProps) {
+  const { goto = "" } = props;
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const goto = useSearchParams().get("goto");
 
   const handleCaptchaChange = (ev: Event) => {
     if (!("detail" in ev)) {
@@ -34,13 +37,13 @@ export default function VerifyHumanPage() {
         url = new URL("/downloads/exos.vcard", window.location.href);
         break;
       default:
-        url = new URL("/");
+        url = new URL("/", window.location.href);
     }
 
     url.searchParams.set("captcha_token", captchaToken);
 
     window.open(url.toString());
-  }, [captchaToken, goto]);
+  }, [captchaToken]);
 
   return (
     <main className="min-h-screen bg-black text-green-500 flex flex-col items-center mx-auto max-w-5xl px-6 py-12">
