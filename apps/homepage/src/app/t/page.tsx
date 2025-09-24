@@ -7,14 +7,6 @@ import { DownloadButtons } from "@/components/downloadbuttons";
 import Altcha from "@/components/captcha";
 import { RoundLogo } from "@/components/roundlogo";
 
-/*const CAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY;
-
-console.log('api de captcha', CAPTCHA_SITE_KEY);
-
-if (typeof CAPTCHA_SITE_KEY !== 'string') {
-    throw new Error('CAPTCHA_SITE_KEY is not defined');
-}*/
-
 enum ContactStatus {
   notload,
   loading,
