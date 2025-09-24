@@ -16,6 +16,7 @@ RUN npm ci --omit=dev
 FROM base AS builder
 
 ARG NEXT_PUBLIC_CAPTCHA_URI
+ENV NEXT_PUBLIC_CAPTCHA_URI=$NEXT_PUBLIC_CAPTCHA_URI
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
