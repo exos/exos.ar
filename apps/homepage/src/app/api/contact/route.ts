@@ -40,9 +40,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "From is required" }, { status: 400 });
   }
 
-  const scape = (text: string) => text.trim().replace(/`/g, "\\`");
+  const escapeText = (text: string) => text.trim().replace(/`/g, "\\`");
 
-  const fullMessage = `From: \`${scape(from)}\`\n\nMessage:\n \`\`\`${scape(message)}\`\`\`\n`;
+  const fullMessage = `From: \`${escapeText(from)}\`\n\nMessage:\n \`\`\`${escapeText(message)}\`\`\`\n`;
 
   try {
     const bot = getTelegramBot();

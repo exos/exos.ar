@@ -8,7 +8,7 @@ if (typeof CAPTCHA_SECRET !== "string") {
   throw new Error("Captcha secret is not defined");
 }
 
-const CaptchaRequiredResone = () => {
+const CaptchaRequiredResponse = () => {
   return NextResponse.json(
     {
       error: "Captcha is required",
@@ -73,7 +73,7 @@ export async function middleware(request: NextRequest) {
 
   if (url.pathname.startsWith("/api/contact")) {
     if (!(await verifyCaptcha(request, response))) {
-      return CaptchaRequiredResone();
+      return CaptchaRequiredResponse();
     }
   }
 

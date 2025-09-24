@@ -132,7 +132,7 @@ export default function TPage() {
   }, [fetchContactInfo]);
 
   return (
-    <main className="min-h-screen bg-black text-green-500 items-center mx-auto max-w-5x1 px-6 py-12">
+    <main className="min-h-screen bg-black text-green-500 items-center mx-auto max-w-5xl px-6 py-12">
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="flex items-center space-x-4">
           <RoundLogo />
@@ -140,9 +140,7 @@ export default function TPage() {
             <strong className="block text-lg font-semibold">
               Oscar J. Gentilezza
             </strong>
-            <span className="text-gray-600">
-              Backend Developer/Architecture
-            </span>
+            <span className="text-gray-600">Backend Developer / Architect</span>
           </div>
         </div>
       </div>
@@ -177,7 +175,7 @@ export default function TPage() {
                 onClick={() => fetchContactInfo()}
                 className="inline-block rounded-md border border-green-500 bg-green-500 text-white px-4 py-2 hover:bg-green-600 hover:border-green-600"
               >
-                Re-try
+                Retry
               </a>
             </div>
           )}
