@@ -8,8 +8,11 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN mkdir -p apps/homepage
+
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json ./
+COPY apps/homepage/package.json apps/homepage/
 RUN npm ci
 
 # Rebuild the source code only when needed
