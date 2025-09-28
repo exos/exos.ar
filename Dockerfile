@@ -8,27 +8,29 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN mkdir -p apps/homepage
+
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+COPY apps/homepage/package.json apps/homepage/
+RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
 
 ARG NEXT_PUBLIC_CAPTCHA_URI
+ENV NEXT_PUBLIC_CAPTCHA_URI=$NEXT_PUBLIC_CAPTCHA_URI
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-RUN npm ci
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm run build
+RUN npm run build -- --filter=homepage
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -47,11 +49,9 @@ COPY --from=builder /app/apps/homepage/public ./public
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/apps/homepage/.next/standalone/apps/homepage ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/homepage/.next/standalone/node_modules ./node_modules
 COPY --from=builder --chown=nextjs:nodejs /app/apps/homepage/.next/static ./.next/static
 # COPY --from=deps /app/node_modules ./node_modules
-
-COPY package-lock.json ./
-RUN npm ci --omit=dev
 
 USER nextjs
 
@@ -70,4 +70,5 @@ ENV PORT=3000
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
 ENV HOSTNAME="0.0.0.0"
+
 CMD ["node", "server.js"]

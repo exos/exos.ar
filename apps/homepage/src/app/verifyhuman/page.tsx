@@ -54,9 +54,7 @@ export default function VerifyHumanPage(props: VerifyHumanPageProps) {
             <strong className="block text-lg font-semibold">
               Oscar J. Gentilezza
             </strong>
-            <span className="text-gray-600">
-              Backend Developer/Architecture
-            </span>
+            <span className="text-gray-600">Backend Developer / Architect</span>
           </div>
         </div>
       </div>

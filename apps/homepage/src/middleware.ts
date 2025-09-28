@@ -3,12 +3,13 @@ import { NextResponse } from "next/server";
 import { verifyServerSignature } from "altcha-lib";
 
 const CAPTCHA_SECRET = process.env.CAPTCHA_SECRET;
+const CAPTHCA_BYPASS = process.env.CAPTCHA_BYPASS === "YES";
 
 if (typeof CAPTCHA_SECRET !== "string") {
   throw new Error("Captcha secret is not defined");
 }
 
-const CaptchaRequiredResone = () => {
+const CaptchaRequiredResponse = () => {
   return NextResponse.json(
     {
       error: "Captcha is required",
@@ -21,6 +22,8 @@ async function verifyCaptcha(
   request: NextRequest,
   response: NextResponse,
 ): Promise<boolean> {
+  if (CAPTHCA_BYPASS) return true;
+
   let token: string | null;
   let fromCookie: boolean = false;
 
@@ -68,7 +71,7 @@ export async function middleware(request: NextRequest) {
 
   if (url.pathname.startsWith("/api/contact")) {
     if (!(await verifyCaptcha(request, response))) {
-      return CaptchaRequiredResone();
+      return CaptchaRequiredResponse();
     }
   }
 

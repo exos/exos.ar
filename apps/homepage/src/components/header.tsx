@@ -25,8 +25,8 @@ function HeaderLink({
   );
 }
 
-export function ExosHeader(pros: ExosHeaderProperties) {
-  const { section } = pros;
+export function ExosHeader(props: ExosHeaderProperties) {
+  const { section } = props;
 
   return (
     <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -34,7 +34,7 @@ export function ExosHeader(pros: ExosHeaderProperties) {
         <RoundLogo />
         <div>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Exos homepage
+            Exos Homepage
           </h1>
           <p className="mt-1 text-green-400/80">
             Software Engineer • Buenos Aires, Argentina
