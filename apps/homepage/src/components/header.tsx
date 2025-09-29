@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { RoundLogo } from "./roundlogo";
 
 export interface ExosHeaderProperties {
@@ -30,17 +31,19 @@ export function ExosHeader(props: ExosHeaderProperties) {
 
   return (
     <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div className="flex items-center gap-4">
-        <RoundLogo />
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Exos Homepage
-          </h1>
-          <p className="mt-1 text-green-400/80">
-            Software Engineer • Buenos Aires, Argentina
-          </p>
+      <Link href="/">
+        <div className="flex items-center gap-4">
+          <RoundLogo />
+          <div>
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Exos Homepage
+            </h1>
+            <p className="mt-1 text-green-400/80">
+              Software Engineer • Buenos Aires, Argentina
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
       <nav className="flex gap-4 text-sm">
         <HeaderLink href="/" name="About" active={section === "about"} />
         <HeaderLink
