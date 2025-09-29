@@ -9,14 +9,14 @@ export function DownloadButtons() {
           href="/downloads/exos.vcard"
           className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
         >
-          <IdCard className="inline h-4 w-4 mr-1" />
+          <IdCard className="mr-1 inline h-4 w-4" />
           Download vCard
         </a>
         <a
           href="/downloads/exos.asc"
           className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
         >
-          <LockKeyholeOpen className="inline h-4 w-4 mr-1" />
+          <LockKeyholeOpen className="mr-1 inline h-4 w-4" />
           Download PGP
         </a>
       </div>
