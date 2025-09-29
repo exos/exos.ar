@@ -1,3 +1,4 @@
+import { Brain, Github, Linkedin, SquareUser } from "lucide-react";
 import { ExosHeader } from "@/components/header";
 
 export default function Home() {
@@ -26,12 +27,14 @@ export default function Home() {
               href="https://github.com/exos"
               className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
             >
+              <Github className="inline h-4 w-4 mr-1" />
               GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/ogexos/"
               className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
             >
+              <Linkedin className="inline h-4 w-4 mr-1" />
               LinkedIn
             </a>
           </div>
@@ -39,7 +42,10 @@ export default function Home() {
 
         {/* About */}
         <section id="about" className="mt-14">
-          <h2 className="text-xl font-medium">About</h2>
+          <h2 className="text-xl font-medium">
+            <SquareUser className="inline h-5 w-5 mr-1" />
+            About
+          </h2>
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
             <p className="text-green-100/90">
               Follower of bits and bytes; old-school hacker (as in the GNU
@@ -64,7 +70,10 @@ export default function Home() {
 
         {/* Skills */}
         <section id="skills" className="mt-14">
-          <h2 className="text-xl font-medium">Skills</h2>
+          <h2 className="text-xl font-medium">
+            <Brain className="inline h-5 w-5 mr-1" />
+            Skills
+          </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg border border-green-500/20 p-4">
               <h3 className="text-green-300">Backend</h3>
