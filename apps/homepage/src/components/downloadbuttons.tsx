@@ -1,3 +1,5 @@
+import { IdCard, LockKeyholeOpen } from "lucide-react";
+
 export function DownloadButtons() {
   return (
     <section className="mt-10 rounded-xl border border-green-500/20 bg-green-500/5 p-6">
@@ -7,12 +9,14 @@ export function DownloadButtons() {
           href="/downloads/exos.vcard"
           className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
         >
+          <IdCard className="inline h-4 w-4 mr-1" />
           Download vCard
         </a>
         <a
           href="/downloads/exos.asc"
           className="rounded-md border border-green-500/10 bg-green-500/10 px-3 py-1.5 hover:border-green-300 hover:text-green-300"
         >
+          <LockKeyholeOpen className="inline h-4 w-4 mr-1" />
           Download PGP
         </a>
       </div>
