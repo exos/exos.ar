@@ -1,6 +1,6 @@
 # syntax=docker.io/docker/dockerfile:1
 
-FROM node:24.10.4-alpine AS base
+FROM node:24.12-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -22,8 +22,8 @@ ARG NEXT_PUBLIC_CAPTCHA_URI
 ENV NEXT_PUBLIC_CAPTCHA_URI=$NEXT_PUBLIC_CAPTCHA_URI
 
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
