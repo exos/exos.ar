@@ -6,7 +6,8 @@
     "dev": "npx next dev --turbopack",
     "build": "npx next build --turbopack",
     "start": "npx next start",
-    "lint": "npx eslint"
+    "lint": "npx eslint",
+    "ncu": "npx ncu"
   },
   "dependencies": {
     "altcha": "^2.2.3",
